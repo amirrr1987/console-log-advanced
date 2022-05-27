@@ -1,0 +1,50 @@
+{
+  "name": "advanced-console-log",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node test.js",
+    "dev": "nodemon test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirrr1987/advanced-console-log.git"
+  },
+  "keywords": [
+    "console log",
+    "log",
+    "debugger",
+    "check error",
+    "console",
+    "log",
+    "nodejs",
+    "logger",
+    "commonjs",
+    "expressjs",
+    "nestjs",
+    "debug",
+    "debugger",
+    "debugging",
+    "logging",
+    "development",
+    "development-tools",
+    "js",
+    "javascript",
+    "dev-tools"
+  ],
+  "author": {
+    "email": "maghami.a1987@gmail.com",
+    "name": "Amir Maghami",
+    "url": "http://amirmaghami.ir/"
+  },
+  "type": "commonjs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amirrr1987/advanced-console-log/issues"
+  },
+  "homepage": "https://github.com/amirrr1987/advanced-console-log#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
