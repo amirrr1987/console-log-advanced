@@ -1,89 +1,91 @@
-let mode = 'product';
+let mode = "product";
 
 const isDevelopMode = (status) => {
   mode = status;
 };
-const runArray = (data) => {
+const logArray = (data) => {
+  console.log("Type is: array");
   console.dir(data);
 };
-const runObject = (data) => {
+const logObject = (data) => {
+  console.log("Type is: object");
   console.table(data);
 };
-const runString = (data) => {
+const logString = (data) => {
+  console.log("Type is: string");
   console.log(data);
 };
-const runNumber = (data) => {
+const logNumber = (data) => {
+  console.log("Type is: number");
   console.log(data);
 };
-const runStringNumber = (data) => { 
-  console.log('runStringNumber');
-  console.log(data);
-}
-const runBoolean = (data) => {
+const logStringNumber = (data) => {
+  console.log("Type is: string number");
   console.log(data);
 };
-const runNull = () => {
+const logBoolean = (data) => {
+  console.log("Type is: boolean");
+  console.log(data);
+};
+const logNull = () => {
+  console.log("Type is: null");
   console.log("null");
 };
-const runUndefined = () => {
+const logUndefined = () => {
+  console.log("Type is: undefined");
   console.log("undefined");
 };
 
-const runDevelop = (data) => {
-
+const logDevelop = (data) => {
   let dataType = typeof data;
-  if (dataType && Array.isArray(data)){
+  if (dataType && Array.isArray(data)) {
     dataType = "array";
   }
-  if (typeof parseInt(data) === "number") {
-    dataType = "stringNumber";  
+  if (dataType === "string" && typeof parseInt(data) === "number") {
+    dataType = "stringNumber";
   }
 
   switch (dataType) {
-    case 'array':
-      runArray(data)
-      break
-      
-    case 'object':
-      runObject(data);
-      break;
-        
-    case 'string':
-      runString(data);
-      break;
-          
-    case 'number':
-      runNumber(data);
-      break;
-          
-    case 'stringNumber':
-      runStringNumber(data);
+    case "array":
+      logArray(data);
       break;
 
-    case 'boolean':
-      runBoolean(data);
+    case "object":
+      logObject(data);
       break;
 
-    case 'null':
-      runNull(data);
+    case "string":
+      logString(data);
       break;
 
-    case 'undefined':
-      runUndefined(data);
+    case "number":
+      logNumber(data);
       break;
-    
+
+    case "stringNumber":
+      logStringNumber(data);
+      break;
+
+    case "boolean":
+      logBoolean(data);
+      break;
+
+    case "null":
+      logNull(data);
+      break;
+
+    case "undefined":
+      logUndefined(data);
+      break;
   }
 };
-const runProduct = () => {
-  console.log("Sorry, we are in product mode");
-};
-const logger = (logData) => {
 
+const logger = (logData) => {
   if (mode == "develop") {
-    runDevelop(logData);
+    logDevelop(logData);
   }
   if (mode == "product") {
-    runProduct();
+    console.log("Sorry, we are in product mode");
   }
 };
 
