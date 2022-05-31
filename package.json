@@ -1,6 +1,6 @@
 {
   "name": "advanced-console-log",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/amirrr1987/advanced-console-log.git"
   },
+  "types": "./index.d.ts",
   "keywords": [
     "console log",
     "log",

@@ -1,6 +1,6 @@
 let mode = 'product';
 let varName = '';
-const isDevelopMode = (status) => {
+const setMode = (status) => {
   mode = status;
 };
 const runArray = (data) => {
@@ -122,7 +122,7 @@ const logger = (name, logData) => {
   }
 };
 
-module.exports.isDevelopMode = isDevelopMode;
+module.exports.setMode = setMode;
 module.exports.logger = logger;
 
 
