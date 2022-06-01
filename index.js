@@ -114,7 +114,7 @@ const runProduct = () => {
 const logger = (name, logData) => {
   
   if (mode == "develop") {
-    varName = name+ ':';
+    varName = name+ ' return:';
     runDevelop(logData);
   }
   if (mode == "product") {

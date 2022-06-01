@@ -50,9 +50,9 @@ npm i -D advanced-console-log
 
 ``` javascript
 
-const { isDevelopMode, logger } =  require("advanced-console-log.js");
+const { setMode, logger } =  require("advanced-console-log.js");
 
-isDevelopMode("develop");
+setMode("develop");
 
 const foo = [{name:  'foo',age:  32, active:  true}]
 
@@ -62,7 +62,7 @@ logger(foo)
 
   
 
-## isDevMode === true
+## setMode === 'deleop'
 
   
 
@@ -70,10 +70,10 @@ logger(foo)
 
 --------------------- Start log ------------------------------
  
-- Type is:  object
-- Is this an Array? Yes
-- Array Length:  1
-- foo return: 
+Type is: Array
+Is this an Array? Yes
+Array Length:  1
+foo return: 
 [ { name: 'foo', age: 32, active: true } ]
  
 ---------------------  End log  ------------------------------
@@ -81,7 +81,7 @@ logger(foo)
 ```
 
   
-  ## isDevMode === false
+  ## setMode === 'product'
 
   
 

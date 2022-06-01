@@ -1,7 +1,7 @@
-const { isDevelopMode ,logger} = require("./index");
-// import { isDevelopMode ,logger} from './index' 
-isDevelopMode('develop');
+const { setMode ,logger} = require("./index");
+
+setMode('develop');
 
 let x = '3';
 
-logger(x);
+logger('x', x);

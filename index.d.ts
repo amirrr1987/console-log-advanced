@@ -1,2 +1,2 @@
-export declare let logger: Function;
-export declare let setMode: Function;
+export declare function logger(): void
+export declare function setMode(): void
