@@ -1,12 +1,8 @@
 {
   "name": "advanced-console-log",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "node test.js",
-    "dev": "nodemon test.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/amirrr1987/advanced-console-log.git"
@@ -44,8 +40,5 @@
   "bugs": {
     "url": "https://github.com/amirrr1987/advanced-console-log/issues"
   },
-  "homepage": "https://github.com/amirrr1987/advanced-console-log#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.16"
-  }
+  "homepage": "https://github.com/amirrr1987/advanced-console-log#readme"
 }
