@@ -1,2 +1,2 @@
-export declare function logger(): void
-export declare function isDevelopMode(): void
+export declare function logger(name:string, value: any): void
+export declare function isDevelopMode(mode:boolean): void
