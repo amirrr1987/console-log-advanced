@@ -1,6 +1,6 @@
-let mode = 'product';
+let mode = false;
 let varName = '';
-const setMode = (status) => {
+const isDevelopMode = (status) => {
   mode = status;
 };
 const runArray = (data) => {
@@ -42,12 +42,7 @@ const runBoolean = (data) => {
   console.log(varName , data); 
   console.log('---------------------- End log ------------------------------');
 };
-const runNull = (data) => {
-  console.log('--------------------- Start log ------------------------------');
-  console.log('Type is: null');
-  console.log(varName , data); 
-  console.log('---------------------- End log ------------------------------');
-};
+
 const runUndefined = (data  ) => {
   console.log('--------------------- Start log ------------------------------');
   console.log('Type is: undefined');
@@ -68,9 +63,6 @@ const runDevelop = (data) => {
   }
   if (isNumeric(+data) && typeof data === 'string') {
     dataType = "stringNumber";  
-  }
-  if (typeof data === 'object' && data == null) {
-    dataType = "null";
   }
 
   switch (dataType) {
@@ -113,16 +105,16 @@ const runProduct = () => {
 };
 const logger = (name, logData) => {
   
-  if (mode == "develop") {
+  if (mode) {
     varName = name+ ' return:';
     runDevelop(logData);
   }
-  if (mode == "product") {
+  if (!mode) {
     runProduct();
   }
 };
 
-module.exports.setMode = setMode;
+module.exports.isDevelopMode = isDevelopMode;
 module.exports.logger = logger;
 
 
