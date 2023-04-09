@@ -1,102 +1,54 @@
 # advanced-console-log
 
-
-
-A console log is show in block line width start and end, you see:
-
-  
-
-  
-
-1. data file URL and name
-
-  
+1. console log is show in block line width start and end
 
 2. Check data type
 
-  
-
-3. Check type if data is array
-
-  
-
-4. show data width `console.dir` method
-
-  
-
-  
-
 ## Install
-
-  
 
 Install via **npm**
 
-  
-
-``` javascript
-npm i -D advanced-console-log
+```javascript
+npm i -D console-log-advanced
 ```
-
-  
-
-  
 
 ## Usage
 
-  
+```javascript
 
-  
+import  Logger   from "console-log-advanced-log"
 
-``` javascript
+const logger = new Logger({isDevelopMode: true})
 
-const { isDevelopMode, logger } =  require("advanced-console-log.js");
 
-isDevelopMode(true);
+const foo = {name:  'foo',age:  32, active:  true}
 
-const foo = [{name:  'foo',age:  32, active:  true}]
-
-logger('foo,'foo)
+logger.message({name: 'sdfsdf', value: foo})
 
 ```
-
-  
 
 ## isDevelopMode === 'true'
 
-  
+```javascript
 
-``` javascript
-
+--------------------------------------------------------------
 --------------------- Start log ------------------------------
- 
-Type is: Array
-Length is : 1
-foo return: 
-[ { name: 'foo', age: 32, active: true } ]
- 
----------------------  End log  ------------------------------
+Type is:  Object
+foo {name: 'foo', age: 32, active: true}
+log duration is:: 0.3232421875 ms
+---------------------- End log ------------------------------
+-------------------------------------------------------------
 
 ```
 
-  
-  ## isDevelopMode === false
+## isDevelopMode === false
 
-  
-
-``` javascript
+```javascript
 
 Sorry we are in production mode..
 
 ```
-  
 
 ## License
 
-  
-
 MIT
-
-  
-
-  
