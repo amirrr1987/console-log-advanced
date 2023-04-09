@@ -1,120 +1,31 @@
-let mode = false;
-let varName = '';
-const isDevelopMode = (status) => {
-  mode = status;
-};
-const runArray = (data) => {
-  console.log('--------------------- Start log ------------------------------');
-  console.log('Type is: Array');
-  console.log('Length is:', data.length);
-  console.log(varName);
-  console.dir(data);
-  console.log('---------------------- End log ------------------------------');
-};
-const runObject = (data) => {
-  console.log('--------------------- Start log ------------------------------');
-  console.log('Type is: Obejct');
-  console.log(varName);
-  console.table(data);
-  console.log('---------------------- End log ------------------------------');
-};
-const runString = (data) => {
-  console.log('--------------------- Start log ------------------------------');
-  console.log('Type is: String');
-  console.log(varName , data); 
-  console.log('---------------------- End log ------------------------------');
-};
-const runNumber = (data) => {
-  console.log('--------------------- Start log ------------------------------');
-  console.log('Type is: Number');
-  console.log(varName , data); 
-  console.log('---------------------- End log ------------------------------');
-};
-const runStringNumber = (data) => { 
-  console.log('--------------------- Start log ------------------------------');
-  console.log('Type is: String Number');
-  console.log(varName , data); 
-  console.log('---------------------- End log ------------------------------');
+class LoggerClass {
+
+  constructor({ isDevelopMode }) {
+    this._isDevelopMode = isDevelopMode
+  }
+  message({ name, value }) {
+    this._isDevelopMode ? this.#_runDevelop(name, value) : this.#_runProduct()
+
+  }
+  #_runDevelop(name, value) {
+    console.log('                                                               ');
+    console.log('%c--------------------------------------------------------------', 'color: red');
+    console.log('%c--------------------- Start log ------------------------------', 'color: red');
+    console.time("log duration is:");
+    const res = Object.prototype.toString.call(value)
+    const dataType = res.split('[object')[1].split(']')[0]
+    console.log(`Type is: ${dataType}`);
+    console.log(name, value);
+    console.timeEnd("log duration is:");
+    console.log('%c---------------------- End log ------------------------------', 'color: red');
+    console.log('%c-------------------------------------------------------------', 'color: red');
+    console.log('                                                               ');
+  }
+
+  #_runProduct() {
+    console.log('Sorry we are in production mode..')
+  }
 }
-const runBoolean = (data) => {
-  console.log('--------------------- Start log ------------------------------');
-  console.log('Type is: Boolean');
-  console.log(varName , data); 
-  console.log('---------------------- End log ------------------------------');
-};
-
-const runUndefined = (data  ) => {
-  console.log('--------------------- Start log ------------------------------');
-  console.log('Type is: undefined');
-  console.log(varName , data); 
-  console.log('---------------------- End log ------------------------------');
-};
-
-function isNumeric(val) {
-    return /^-?\d+$/.test(val);
-}
-
-
-const runDevelop = (data) => {
-
-  let dataType = typeof data;
-  if (dataType && Array.isArray(data)){
-    dataType = "array";
-  }
-  if (isNumeric(+data) && typeof data === 'string') {
-    dataType = "stringNumber";  
-  }
-
-  switch (dataType) {
-    case 'array':
-      runArray(data)
-      break
-      
-    case 'object':
-      runObject(data);
-      break;
-        
-    case 'string':
-      runString(data);
-      break;
-          
-    case 'number':
-      runNumber(data);
-      break;
-          
-    case 'stringNumber':
-      runStringNumber(data);
-      break;
-
-    case 'boolean':
-      runBoolean(data);
-      break;
-
-    case 'null':
-      runNull(data);
-      break;
-
-    case 'undefined':
-      runUndefined(data);
-      break;
-    
-  }
-};
-const runProduct = () => {
-  console.log("Sorry, we are in product mode");
-};
-const logger = (name, logData) => {
-  
-  if (mode) {
-    varName = name+ ' return:';
-    runDevelop(logData);
-  }
-  if (!mode) {
-    runProduct();
-  }
-};
-
-module.exports.isDevelopMode = isDevelopMode;
-module.exports.logger = logger;
+module.exports = LoggerClass;
 
 
