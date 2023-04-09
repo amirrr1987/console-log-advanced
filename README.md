@@ -1,4 +1,4 @@
-# advanced-console-log
+# console-log-advanced
 
 1. console log is show in block line width start and end
 
