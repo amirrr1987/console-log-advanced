@@ -16,10 +16,9 @@ npm i -D console-log-advanced
 
 ```javascript
 
-import  Logger   from "console-log-advanced-log"
+import Logger from "console-log-advanced-log"
 
 const logger = new Logger({isDevelopMode: true})
-
 
 const foo = {name:  'foo',age:  32, active:  true}
 
@@ -27,7 +26,7 @@ logger.message({name: 'sdfsdf', value: foo})
 
 ```
 
-## isDevelopMode === 'true'
+## isDevelopMode = true
 
 ```javascript
 
@@ -43,12 +42,10 @@ foo
 
 ```
 
-## isDevelopMode === false
+## isDevelopMode = false
 
-```javascript
-
+```
 Sorry we are in production mode..
-
 ```
 
 ## License

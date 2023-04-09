@@ -1,7 +1,7 @@
 {
   "name": "console-log-advanced",
-  "version": "0.0.20",
-  "description": "use in front-end",
+  "version": "1.0.0",
+  "description": "You can use in front-end framworks",
   "main": "index.js",
   "repository": {
     "type": "git",
