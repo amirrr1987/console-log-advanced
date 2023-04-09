@@ -1,7 +1,7 @@
 {
   "name": "console-log-advanced",
-  "version": "0.0.13",
-  "description": "",
+  "version": "0.0.14",
+  "description": "use in front-end",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -9,33 +9,28 @@
   },
   "types": "./index.d.ts",
   "keywords": [
-    "console log",
-    "log",
-    "debugger",
     "check error",
+    "console log",
     "console",
-    "log",
-    "nodejs",
-    "logger",
-    "commonjs",
-    "expressjs",
-    "nestjs",
     "debug",
     "debugger",
-    "debugging",
-    "logging",
     "development",
-    "development-tools",
+    "javaScript",
     "js",
-    "javascript",
-    "dev-tools"
+    "log",
+    "logger",
+    "logging",
+    "nodejs",
+    "tools",
+    "ts",
+    "TypeScript"
   ],
   "author": {
     "email": "maghami.a1987@gmail.com",
     "name": "Amir Maghami",
     "url": "http://amirmaghami.ir/"
   },
-  "type": "commonjs",
+  "type": "module",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/amirrr1987/console-log-advanced/issues"
