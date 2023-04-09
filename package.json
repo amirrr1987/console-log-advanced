@@ -1,11 +1,11 @@
 {
-  "name": "advanced-console-log",
-  "version": "0.0.10",
+  "name": "console-log-advanced",
+  "version": "0.0.11",
   "description": "",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amirrr1987/advanced-console-log.git"
+    "url": "git+https://github.com/amirrr1987/console-log-advanced.git"
   },
   "types": "./index.d.ts",
   "keywords": [
@@ -38,7 +38,7 @@
   "type": "commonjs",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/amirrr1987/advanced-console-log/issues"
+    "url": "https://github.com/amirrr1987/console-log-advanced/issues"
   },
-  "homepage": "https://github.com/amirrr1987/advanced-console-log#readme"
+  "homepage": "https://github.com/amirrr1987/console-log-advanced#readme"
 }
