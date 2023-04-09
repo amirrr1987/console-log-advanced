@@ -1,4 +1,4 @@
-class LoggerClass {
+class Logger {
 
   constructor({ isDevelopMode }) {
     this._isDevelopMode = isDevelopMode
@@ -26,6 +26,7 @@ class LoggerClass {
     console.log('Sorry we are in production mode..')
   }
 }
-module.exports = LoggerClass;
+module.exports = Logger;
+
 
 
