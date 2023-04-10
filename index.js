@@ -7,9 +7,9 @@ class Logger {
     this[_count] = 0;
   }
 
-  message({ name = 'Data is:', value, path,line }) {
+  message({ name = 'Data is:', value, path, line }) {
     if (this[_isDevelopMode]) {
-      this.#_runDevelop(name, value, path,line);
+      this.#_runDevelop(name, value, path, line);
     } else {
       this[_count]++;
       if (this[_count] === 1) {
@@ -24,10 +24,10 @@ class Logger {
     console.log('%c--------------------------------------------------------------', 'color: red');
     console.log('%c--------------------- Start log ------------------------------', 'color: red');
     console.log('                                                               ');
-    console.log(`%cFile name: ${path}`, 'color: blue');
-    console.log(`%cLog line: ${line}`, 'color: blue');
-    console.log(`%cVarable name is: ${name}`, 'color: blue');
-    console.log(`%cType is: ${dataType}`, 'color: blue');
+    console.log(`%cFile name:`, path, 'color: blue', 'color: green');
+    console.log(`%cLog line:`, line, 'color: blue', 'color: green');
+    console.log(`%cVarable name is: `, name, 'color: blue', 'color: green');
+    console.log(`%cType is:`, dataType, 'color: blue', 'color: green');
     if (typeof value === 'object') {
       console.dir(value);
     }
