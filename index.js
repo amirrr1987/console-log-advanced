@@ -7,9 +7,9 @@ class Logger {
     this[_count] = 0;
   }
 
-  message({ name = 'Data is:', value, path, line }) {
+  message({ name = 'Data is:', value, path = '', line = '', comment = '' }) {
     if (this[_isDevelopMode]) {
-      this.#_runDevelop(name, value, path, line);
+      this.#_runDevelop(name, value, path, line, comment);
     } else {
       this[_count]++;
       if (this[_count] === 1) {
@@ -17,7 +17,7 @@ class Logger {
       }
     }
   }
-  #_runDevelop(name, value, path, line) {
+  #_runDevelop(name, value, path, line, comment) {
     const res = Object.prototype.toString.call(value)
     const dataType = res.split('[object')[1].split(']')[0]
     console.log('                                                               ');
@@ -34,6 +34,8 @@ class Logger {
     else {
       console.log(value);
     }
+    console.log(`%cComment: %c${comment}`, 'color: blue', 'color: red');
+
     console.log('                                                               ');
     console.log('%c---------------------- End log ------------------------------', 'color: red');
     console.log('%c-------------------------------------------------------------', 'color: red');

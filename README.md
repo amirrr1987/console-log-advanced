@@ -63,6 +63,13 @@ Sorry we are in production mode..
 }
 ```
 
+
+### Webstrom snippet
+
+```
+logger.message({ name: '$Variable$', value: $Variable$, path: '$FileName$', line: '$LineNumber$'})
+```
+
 ### License
 
 MIT
