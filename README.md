@@ -22,7 +22,7 @@ const logger = new Logger({isDevelopMode: true})
 
 const foo = {name:  'foo',age:  32, active:  true}
 
-logger.message({name: 'sdfsdf', value: foo})
+logger.message({name: 'foo', value: foo , path: '/src/logger.js'})
 
 ```
 
@@ -33,8 +33,9 @@ logger.message({name: 'sdfsdf', value: foo})
 --------------------------------------------------------------
 --------------------- Start log ------------------------------
 
+File path: /src/logger.js
+Varable name is: foo
 Type is:  Object
-foo
 {name: 'foo', age: 32, active: true}
 
 ---------------------- End log ------------------------------
@@ -46,6 +47,19 @@ foo
 
 ```
 Sorry we are in production mode..
+```
+
+
+# VSCode snippet
+
+```
+"console log advanced": {
+  "prefix": "message",
+  "body": [
+    "logger.message({ name: '${1:var}', value: ${1:var}, path: '$TM_DIRECTORY/$TM_FILENAME' })"
+  ],
+  "description": "console log advanced"
+}
 ```
 
 ## License
