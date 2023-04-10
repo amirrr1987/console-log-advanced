@@ -33,7 +33,8 @@ logger.message({name: 'foo', value: foo , path: '/src/logger.js'})
 --------------------------------------------------------------
 --------------------- Start log ------------------------------
 
-File path: /src/logger.js
+File name: logger.js
+Log line: '8'
 Varable name is: foo
 Type is:  Object
 {name: 'foo', age: 32, active: true}
@@ -56,7 +57,7 @@ Sorry we are in production mode..
 "console log advanced": {
   "prefix": "message",
   "body": [
-    "logger.message({ name: '${1:var}', value: ${1:var}, path: '$TM_DIRECTORY/$TM_FILENAME' })"
+    "logger.message({ name: '${1:var}', value: ${1:var}, path: '$TM_FILENAME' , line: '$TM_LINE_NUMBER' })"
   ],
   "description": "console log advanced"
 }

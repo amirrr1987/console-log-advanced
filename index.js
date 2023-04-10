@@ -7,9 +7,9 @@ class Logger {
     this[_count] = 0;
   }
 
-  message({ name = 'Data is:', value, path }) {
+  message({ name = 'Data is:', value, path,line }) {
     if (this[_isDevelopMode]) {
-      this.#_runDevelop(name, value, path);
+      this.#_runDevelop(name, value, path,line);
     } else {
       this[_count]++;
       if (this[_count] === 1) {
@@ -17,14 +17,15 @@ class Logger {
       }
     }
   }
-  #_runDevelop(name, value, path) {
+  #_runDevelop(name, value, path, line) {
     const res = Object.prototype.toString.call(value)
     const dataType = res.split('[object')[1].split(']')[0]
     console.log('                                                               ');
     console.log('%c--------------------------------------------------------------', 'color: red');
     console.log('%c--------------------- Start log ------------------------------', 'color: red');
     console.log('                                                               ');
-    console.log(`%cFile path: ${path}`, 'color: blue');
+    console.log(`%cFile name: ${path}`, 'color: blue');
+    console.log(`%Log line: ${line}`, 'color: blue');
     console.log(`%cVarable name is: ${name}`, 'color: blue');
     console.log(`%cType is: ${dataType}`, 'color: blue');
     if (typeof value === 'object') {
