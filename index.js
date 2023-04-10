@@ -25,7 +25,7 @@ class Logger {
     console.log('%c--------------------- Start log ------------------------------', 'color: red');
     console.log('                                                               ');
     console.log(`%cFile name: ${path}`, 'color: blue');
-    console.log(`c%Log line: ${line}`, 'color: blue');
+    console.log(`%cLog line: ${line}`, 'color: blue');
     console.log(`%cVarable name is: ${name}`, 'color: blue');
     console.log(`%cType is: ${dataType}`, 'color: blue');
     if (typeof value === 'object') {
