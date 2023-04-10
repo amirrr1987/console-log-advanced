@@ -26,7 +26,7 @@ logger.message({name: 'foo', value: foo , path: '/src/logger.js'})
 
 ```
 
-## isDevelopMode = true
+### isDevelopMode = true
 
 ```javascript
 
@@ -44,14 +44,14 @@ Type is:  Object
 
 ```
 
-## isDevelopMode = false
+### isDevelopMode = false
 
 ```
 Sorry we are in production mode..
 ```
 
 
-# VSCode snippet
+### VSCode snippet
 
 ```
 "console log advanced": {
@@ -63,6 +63,6 @@ Sorry we are in production mode..
 }
 ```
 
-## License
+### License
 
 MIT
