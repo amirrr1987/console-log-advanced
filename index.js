@@ -24,9 +24,9 @@ class Logger {
     console.log('%c--------------------------------------------------------------', 'color: red');
     console.log('%c--------------------- Start log ------------------------------', 'color: red');
     console.log('                                                               ');
-    console.log(`%cFile name: %c${path}`, 'color: blue', 'color: red');
-    console.log(`%cLog line: %c${line}`, 'color: blue', 'color: red');
-    console.log(`%cVariable name is: %c${name}`, 'color: blue', 'color: red');
+    if (path) console.log(`%cFile name: %c${path}`, 'color: blue', 'color: red');
+    if (line) console.log(`%cLog line: %c${line}`, 'color: blue', 'color: red');
+    if (name) console.log(`%cVariable name is: %c${name}`, 'color: blue', 'color: red');
     console.log(`%cType is:: %c${dataType}`, 'color: blue', 'color: red');
     if (typeof value === 'object') {
       console.dir(value);
@@ -34,8 +34,7 @@ class Logger {
     else {
       console.log(value);
     }
-    console.log(`%cComment: %c${comment}`, 'color: blue', 'color: red');
-
+    if (comment) console.log(`%cComment: %c${comment}`, 'color: blue', 'color: red');
     console.log('                                                               ');
     console.log('%c---------------------- End log ------------------------------', 'color: red');
     console.log('%c-------------------------------------------------------------', 'color: red');

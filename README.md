@@ -38,7 +38,7 @@ Log line: '8'
 Varable name is: foo
 Type is:  Object
 {name: 'foo', age: 32, active: true}
-
+Comment: This is developer comment
 ---------------------- End log ------------------------------
 -------------------------------------------------------------
 
