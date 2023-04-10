@@ -24,10 +24,10 @@ class Logger {
     console.log('%c--------------------------------------------------------------', 'color: red');
     console.log('%c--------------------- Start log ------------------------------', 'color: red');
     console.log('                                                               ');
-    console.log(`%cFile name:`, path, 'color: blue', 'color: green');
-    console.log(`%cLog line:`, line, 'color: blue', 'color: green');
-    console.log(`%cVarable name is: `, name, 'color: blue', 'color: green');
-    console.log(`%cType is:`, dataType, 'color: blue', 'color: green');
+    console.log(`%cFile name: %c${path}`, 'color: blue', 'color: red');
+    console.log(`%cLog line: %c${line}`, 'color: blue', 'color: red');
+    console.log(`%cVarable name is: %c${name}`, 'color: blue', 'color: red');
+    console.log(`%cType is:: %c${dataType}`, 'color: blue', 'color: red');
     if (typeof value === 'object') {
       console.dir(value);
     }
