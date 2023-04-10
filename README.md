@@ -16,7 +16,7 @@ npm i -D console-log-advanced
 
 ```javascript
 
-import Logger from "console-log-advanced-log"
+import Logger from "console-log-advanced"
 
 const logger = new Logger({isDevelopMode: true})
 
