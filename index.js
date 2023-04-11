@@ -7,9 +7,14 @@ class Logger {
     this[_count] = 0;
   }
 
-  message({ name = 'Data is:', value, path = '', line = '', comment = '' }) {
+  message({ name = 'Data is:', value, path = '', line = '', comment = '', deactivate = false }) {
     if (this[_isDevelopMode]) {
-      this.#_runDevelop(name, value, path, line, comment);
+      if (!deactivate) {
+        this.#_runDevelop(name, value, path, line, comment, deactivate);
+      }
+      else {
+        console.log(`Logger is deactivate, You can active log => deactivate: false`)
+      }
     } else {
       this[_count]++;
       if (this[_count] === 1) {

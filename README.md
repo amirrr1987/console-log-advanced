@@ -20,9 +20,9 @@ import Logger from "console-log-advanced"
 
 const logger = new Logger({isDevelopMode: true})
 
-const foo = {name:  'foo',age:  32, active:  true}
+const foo = {name:  'foo',age:  32, isEdit:  true}
 
-logger.message({name: 'foo', value: foo , path: '/src/logger.js'})
+logger.message({name: 'foo', value: foo , path: '/src/logger.js', line: 300, comment: ' This is developer comment' })
 
 ```
 
@@ -43,6 +43,19 @@ Comment: This is developer comment
 -------------------------------------------------------------
 
 ```
+
+```javascript
+
+
+const _init = {name:  'foo',age:  32, isEdit:  true}
+
+logger.message({name: '_init', value: _init , path: '/src/logger.js', line: 300, comment: ' This is developer comment', deactivate: true })
+
+console.log(`Logger is deactivate, You can active log => deactivate: false`)
+
+```
+
+
 
 ### isDevelopMode = false
 
