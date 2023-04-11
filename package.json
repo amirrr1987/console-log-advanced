@@ -7,9 +7,6 @@
     "type": "git",
     "url": "git+https://github.com/amirrr1987/console-log-advanced.git"
   },
-  "scripts": {
-    "test": "jest"
-  },
   "types": "./index.d.ts",
   "keywords": [
     "check error",
@@ -38,10 +35,5 @@
   "bugs": {
     "url": "https://github.com/amirrr1987/console-log-advanced/issues"
   },
-  "homepage": "https://github.com/amirrr1987/console-log-advanced#readme",
-  "dependencies": {
-  },
-  "devDependencies": {
-    "jest": "^29.5.0"
-  }
+  "homepage": "https://github.com/amirrr1987/console-log-advanced#readme"
 }
