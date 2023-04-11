@@ -13,7 +13,7 @@ class Logger {
         this.#_runDevelop(name, value, path, line, comment, deactivate);
       }
       else {
-        console.log(`Logger is deactivate, You can active log => deactivate: false`)
+        console.log(`%cLogger is deactivate, You can active log => deactivate: false`, 'color: red')
       }
     } else {
       this[_count]++;
@@ -26,7 +26,6 @@ class Logger {
     const res = Object.prototype.toString.call(value)
     const dataType = res.split('[object')[1].split(']')[0]
     console.log('                                                               ');
-    console.log('%c--------------------------------------------------------------', 'color: red');
     console.log('%c--------------------- Start log ------------------------------', 'color: red');
     console.log('                                                               ');
     if (path) console.log(`%cFile name: %c${path}`, 'color: blue', 'color: red');
@@ -42,7 +41,6 @@ class Logger {
     if (comment) console.log(`%cComment: %c${comment}`, 'color: blue', 'color: red');
     console.log('                                                               ');
     console.log('%c---------------------- End log ------------------------------', 'color: red');
-    console.log('%c-------------------------------------------------------------', 'color: red');
     console.log('                                                               ');
   }
   #_runProduct() {
