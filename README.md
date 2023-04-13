@@ -25,7 +25,7 @@ const logger =  new  Logger({isDevelopMode:  true})
 
 const foo = {name:  'foo',age:  32, isEdit:  true}
 
-logger.message({name:  'foo', value: foo , path:  '/src/logger.js', line:  300, comment:  ' This is developer comment' })
+logger.message({name:  'foo', value: foo , path:  '/src/logger.js', line:  300, commit:  ' This is developer commit' })
 
 ```
 
@@ -39,7 +39,7 @@ Log line: '8'
 Varable name is: foo
 Type is: Object
 {name: 'foo', age: 32, active: true}
-Comment: This is developer comment
+Commit: This is developer commit
 ---------------------- End log ------------------------------
 
 ```
@@ -51,7 +51,7 @@ Comment: This is developer comment
 import Logger from  "console-log-advanced"
 const logger =  new  Logger({isDevelopMode:  true})
 const _init = {name:  'foo',age:  32, isEdit:  true}
-logger.message({name:  '_init', value: _init , path:  '/src/logger.js', line:  300, comment:  ' This is developer comment', deactivate:  true })
+logger.message({name:  '_init', value: _init , path:  '/src/logger.js', line:  300, commit:  ' This is developer commit', deactivate:  true })
 console.log(`Logger is deactivate, You can active log => deactivate: false`)
 
 ```
@@ -66,12 +66,12 @@ Sorry we are in production mode..
 
 ``` json
 
-"console log advanced": {
-	"prefix": "message",
-	"body": [
-		"logger.message({ name: '${1:var}', value: ${1:var}, path: '$TM_FILENAME' , line: '$TM_LINE_NUMBER' })"
-	],
-	"description": "console log advanced"
+"console-log-advanced": {
+  "prefix": "logger",
+  "body": [
+    "logger.message({ name: '${1:var}', value: ${1:var}, commit: '${2:commit}' , path: '$TM_FILENAME' , line: '$TM_LINE_NUMBER',  deactivate: false })"
+  ],
+  "description": "console-log-advanced"
 }
 
 ```

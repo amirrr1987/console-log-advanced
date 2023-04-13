@@ -7,10 +7,10 @@ class Logger {
     this[_count] = 0;
   }
 
-  message({ name = 'Data is:', value, path = '', line = '', comment = '', deactivate = false }) {
+  message({ name = 'Data is:', value, path = '', line = '', commit = '', deactivate = false }) {
     if (this[_isDevelopMode]) {
       if (!deactivate) {
-        this.#_runDevelop(name, value, path, line, comment, deactivate);
+        this.#_runDevelop(name, value, path, line, commit, deactivate);
       }
       else {
         console.log(`%cThis Logger is deactivate on file ${path} in line: ${line}`, 'color: red')
@@ -22,7 +22,7 @@ class Logger {
       }
     }
   }
-  #_runDevelop(name, value, path, line, comment) {
+  #_runDevelop(name, value, path, line, commit) {
     const res = Object.prototype.toString.call(value)
     const dataType = res.split('[object')[1].split(']')[0]
     console.log('                                                               ');
@@ -38,7 +38,7 @@ class Logger {
     else {
       console.log(value);
     }
-    if (comment) console.log(`%cComment: %c${comment}`, 'color: blue', 'color: red');
+    if (commit) console.log(`%cCommit: %c${commit}`, 'color: blue', 'color: red');
     console.log('                                                               ');
     console.log('%c---------------------- End log ------------------------------', 'color: red');
     console.log('                                                               ');
