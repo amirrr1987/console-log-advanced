@@ -13,7 +13,7 @@ class Logger {
         this.#_runDevelop(name, value, path, line, comment, deactivate);
       }
       else {
-        console.log(`%cLogger is deactivate, You can active log => deactivate: false`, 'color: red')
+        console.log(`%cThis Logger is deactivate on file ${path} in line: ${line}`, 'color: red')
       }
     } else {
       this[_count]++;
