@@ -1,7 +1,7 @@
-declare class Logger {
+declare class ConsoleLogAdvanced {
   private readonly #isDevelopMode: boolean;
   private readonly #count: number;
   constructor(options: { isDevelopMode: boolean });
-  message(data: { name?: string, value: any, path?: string, line?: string, commit?: string, deactivate?: boolean }): void;
+  logger(data: { name?: string, value: any, path?: string, line?: string, commit?: string, deactivate?: boolean }): void;
 }
-export default Logger;
+export default ConsoleLogAdvanced;
