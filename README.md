@@ -43,7 +43,7 @@ clg.logger({ name:'foo', value: foo , path:'logger.js', line:8, commit:'This is 
 
 ```
 
-### isDevelopMode = true & deactivate = false
+### isDevelopMode = true & isActive = true
 
 ```javascript
 
@@ -58,7 +58,7 @@ Commit: This is developer commit
 
 ```
 
-### isDevelopMode = true & deactivate = true
+### isDevelopMode = true & isActive = false
 
 ```javascript
 
@@ -79,7 +79,7 @@ Sorry we are in production mode..
 "Console Log Advanced": {
     "prefix": "clg",
      "body": [
-          "clg.logger({ name: \"${1:Variable}\", value: ${1:Variable}, path: '$TM_FILENAME', line: '$TM_LINE_NUMBER', commit: \"${2:comment}\", deactivate: false })"
+          "clg.logger({ name: \"${1:Variable}\", value: ${1:Variable}, path: '$TM_FILENAME', line: '$TM_LINE_NUMBER', commit: \"${2:comment}\", isActive: false })"
      ],
      "description": "Console Log Advanced"
 }

@@ -5,9 +5,9 @@ class ConsoleLogAdvanced {
     this[_isDevelopMode] = isDevelopMode;
     this[_count] = 0;
   }
-  logger({ name, value, path, line, commit, deactivate = false }) {
+  logger({ name, value, path, line, commit, isActive = true }) {
     if (this[_isDevelopMode]) {
-      this.#_checkDeactivate(name, value, path, line, commit, deactivate);
+      this.#_checkDeactivate(name, value, path, line, commit, isActive);
     } else {
       this[_count]++;
       if (this[_count] === 1) {
@@ -15,18 +15,18 @@ class ConsoleLogAdvanced {
       }
     }
   }
-  #_checkDeactivate(name, value, path, line, commit, deactivate) {
-    if (!deactivate) {
-      this.#_runDevelop(name, value, path, line, commit, deactivate);
+  #_checkDeactivate(name, value, path, line, commit, isActive) {
+    if (!isActive) {
+      this.#_runDevelop(name, value, path, line, commit, isActive);
     } else {
       this.#_whenLogDeactivate(path, line);
     }
   }
-  #_runDevelop(name, value, path, line, commit, deactivate) {
+  #_runDevelop(name, value, path, line, commit, isActive) {
     const res = Object.prototype.toString.call(value);
     const dataType = res.split("[object")[1].split("]")[0];
 
-    if (!deactivate) {
+    if (!isActive) {
       console.log(
         "                                                               "
       );
