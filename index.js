@@ -16,7 +16,7 @@ class ConsoleLogAdvanced {
     }
   }
   #_checkDeactivate(name, value, path, line, commit,debug, isActive) {
-    if (!isActive) {
+    if (isActive) {
       this.#_runDevelop(name, value, path, line, commit,debug, isActive);
     } else {
       this.#_whenLogDeactivate(path, line);
@@ -26,7 +26,7 @@ class ConsoleLogAdvanced {
     const res = Object.prototype.toString.call(value);
     const dataType = res.split("[object")[1].split("]")[0];
 
-    if (!isActive) {
+    if (isActive) {
       console.log(
         "                                                               "
       );
