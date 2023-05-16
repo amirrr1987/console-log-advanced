@@ -41,9 +41,9 @@ yarn add console-log-advanced
 
 ```javascript
 
-import ConsoleLogAdvanced from  "console-log-advanced"
+import CLG from  "console-log-advanced"
 
-const clg = new ConsoleLogAdvanced({ isDevelopMode: true })
+const clg = new CLG({ isDevelopMode: true })
 
 const foo = { name:'foo', age:32, isEdit:true }
 
@@ -94,7 +94,7 @@ Sorry we are in production mode..
 ### Webstrom snippet
 
 ```javascript
-logger.message({ name: '$Variable$', value: $Variable$, path: '$FileName$', line: '$LineNumber$',commit: '$Commit',isActive: $isActive})
+clg.message({ name: '$Variable$', value: $Variable$, path: '$FileName$', line: '$LineNumber$',commit: '$Commit',isActive: $isActive})
 ```
 
 ### License
