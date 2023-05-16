@@ -5,9 +5,9 @@ class ConsoleLogAdvanced {
     this[_isDevelopMode] = isDevelopMode;
     this[_count] = 0;
   }
-  logger({ name, value, path, line, commit, debug = false, isActive = true }) {
+  logger({ name, value, path, line, commit, isActive = true }) {
     if (this[_isDevelopMode]) {
-      this.#_checkDeactivate(name, value, path, line, commit,debug, isActive);
+      this.#_checkDeactivate(name, value, path, line, commit, isActive);
     } else {
       this[_count]++;
       if (this[_count] === 1) {
@@ -15,14 +15,14 @@ class ConsoleLogAdvanced {
       }
     }
   }
-  #_checkDeactivate(name, value, path, line, commit,debug, isActive) {
+  #_checkDeactivate(name, value, path, line, commit, isActive) {
     if (isActive) {
-      this.#_runDevelop(name, value, path, line, commit,debug, isActive);
+      this.#_runDevelop(name, value, path, line, commit, isActive);
     } else {
       this.#_whenLogDeactivate(path, line);
     }
   }
-  #_runDevelop(name, value, path, line, commit,debug, isActive) {
+  #_runDevelop(name, value, path, line, commit, isActive) {
     const res = Object.prototype.toString.call(value);
     const dataType = res.split("[object")[1].split("]")[0];
 
@@ -33,9 +33,6 @@ class ConsoleLogAdvanced {
       console.log(
         "%c--------------------- Start log ------------------------------",
         "color: red"
-      );
-      console.log(
-        "                                                               "
       );
       if (path) {
         console.log(`%cFile: %c${path}`, "color: blue", "color: red");
@@ -63,19 +60,11 @@ class ConsoleLogAdvanced {
         } else {
           console.log(value);
         }
-        if(debug){
-          debugger
-        }
-        
       }
-      
 
       if (commit) {
         console.log(`%cCommit: %c${commit}`, "color: blue", "color: red");
       }
-      console.log(
-        "                                                               "
-      );
       console.log(
         "%c---------------------- END log ------------------------------",
         "color: red"

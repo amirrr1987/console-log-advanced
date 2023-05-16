@@ -1,6 +1,6 @@
 {
   "name": "console-log-advanced",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "You can use in front-end frameworks",
   "main": "index.js",
   "repository": {
@@ -21,6 +21,9 @@
     "logger",
     "logging",
     "nodejs",
+    "vue",
+    "react",
+    "angular",
     "tools",
     "ts",
     "TypeScript"

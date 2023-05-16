@@ -1,6 +1,6 @@
 # console-log-advanced
 
-The console-log-advanced is an npm package designed to provide developers with more detailed and advanced logging functionality in the browser console or Node.js console. By logging more specific information into the console, you can improve your code and debug more efficiently.
+Console-log-advanced is an npm package that enhances logging functionality in the browser console or Node.js console, enabling developers to log more detailed information and improve code and debugging efficiency.
 
 Some of the benefits of using this package are:
 
@@ -9,7 +9,7 @@ Some of the benefits of using this package are:
 *   Providing additional details about the variables on the console
 *   Creating comprehensive comments for debugging your code
 
-In your projects, you can use these benefits to improve your code during the development phase. By logging more information into the console, you can quickly find and fix errors and bugs. Additionally, by providing more information on the console, you can write cleaner code and avoid using console.log statements for debugging.
+Using console-log-advanced in your projects can improve code quality and debugging efficiency by enabling more detailed console logging, reducing the need for console.log statements, and facilitating quicker error detection and fixing.
 
 ## Install
 
@@ -18,6 +18,14 @@ Install via **npm**
 ```javascript
 
 npm i console-log-advanced
+
+```
+
+Install via **pnpm**
+
+```javascript
+
+pnpm i console-log-advanced
 
 ```
 
@@ -39,7 +47,7 @@ const clg = new ConsoleLogAdvanced({ isDevelopMode: true })
 
 const foo = { name:'foo', age:32, isEdit:true }
 
-clg.logger({ name:'foo', value: foo , path:'logger.js', line:8, commit:'This is developer commit' })
+clg.logger({ name:'foo', value: foo , path:'logger.js', line:8, commit:'This is developer commit', isActive: true })
 
 ```
 
@@ -52,6 +60,7 @@ File: logger.js
 Line: '8'
 Variable is: foo
 Type is: Object
+Value is:
 {name: 'foo', age: 32, active: true}
 Commit: This is developer commit
 ---------------------- End log ------------------------------
@@ -60,8 +69,7 @@ Commit: This is developer commit
 
 ### isDevelopMode = true & isActive = false
 
-```javascript
-
+```plaintext
 Logger is deactivate in file logger.js on line 8
 ```
 
@@ -69,13 +77,11 @@ Logger is deactivate in file logger.js on line 8
 
 ```plaintext
 Sorry we are in production mode..
-
 ```
 
 ### VSCode snippet
 
 ```plaintext
-
 "Console Log Advanced": {
     "prefix": "clg",
      "body": [
@@ -83,15 +89,12 @@ Sorry we are in production mode..
      ],
      "description": "Console Log Advanced"
 }
-
 ```
 
 ### Webstrom snippet
 
 ```javascript
-
-logger.message({ name: '$Variable$', value: $Variable$, path: '$FileName$', line: '$LineNumber$'})
-
+logger.message({ name: '$Variable$', value: $Variable$, path: '$FileName$', line: '$LineNumber$',commit: '$Commit',isActive: $isActive})
 ```
 
 ### License
