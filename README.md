@@ -1,6 +1,6 @@
 # console-log-advanced
 
-Console-log-advanced is an npm package that enhances logging functionality in the browser console or Node.js console, enabling developers to log more detailed information and improve code and debugging efficiency.
+console-log-advanced is an npm package that enhances logging functionality for developers, providing detailed information for efficient debugging in the browser or Node.js console.
 
 Some of the benefits of using this package are:
 
@@ -9,7 +9,7 @@ Some of the benefits of using this package are:
 *   Providing additional details about the variables on the console
 *   Creating comprehensive comments for debugging your code
 
-Using console-log-advanced in your projects can improve code quality and debugging efficiency by enabling more detailed console logging, reducing the need for console.log statements, and facilitating quicker error detection and fixing.
+console-log-advanced improves code quality and debugging efficiency by enabling detailed console logging, reducing the need for console.log statements, and facilitating quick error detection and fixing.
 
 ## Install
 
