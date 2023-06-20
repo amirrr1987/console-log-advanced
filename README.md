@@ -4,10 +4,10 @@ console-log-advanced is an npm package that enhances logging functionality for d
 
 Some of the benefits of using this package are:
 
-*   Displaying more detailed information about variables on the console
-*   Showing the file path and line number on the console
-*   Providing additional details about the variables on the console
-*   Creating comprehensive comments for debugging your code
+- Displaying more detailed information about variables on the console
+- Showing the file file and line number on the console
+- Providing additional details about the variables on the console
+- Creating comprehensive comments for debugging your code
 
 console-log-advanced improves code quality and debugging efficiency by enabling detailed console logging, reducing the need for console.log statements, and facilitating quick error detection and fixing.
 
@@ -40,15 +40,20 @@ yarn add console-log-advanced
 ## Usage
 
 ```javascript
+import CLG from "console-log-advanced";
 
-import CLG from  "console-log-advanced"
+const clg = new CLG({ isDevelopMode: true });
 
-const clg = new CLG({ isDevelopMode: true })
+const foo = { name: "foo", age: 32, isEdit: true };
 
-const foo = { name:'foo', age:32, isEdit:true }
-
-clg.logger({ name:'foo', value: foo , path:'logger.js', line:8, commit:'This is developer commit', isActive: true })
-
+clg.logger({
+  name: "foo",
+  value: foo,
+  file: "logger.js",
+  line: 8,
+  comment: "This is developer comment",
+  isActive: true,
+});
 ```
 
 ### isDevelopMode = true & isActive = true
@@ -62,7 +67,7 @@ Variable is: foo
 Type is: Object
 Value is:
 {name: 'foo', age: 32, active: true}
-Commit: This is developer commit
+comment: This is developer comment
 ---------------------- End log ------------------------------
 
 ```
@@ -85,7 +90,7 @@ Sorry we are in production mode..
 "Console Log Advanced": {
     "prefix": "clg",
      "body": [
-          "clg.logger({ name: \"${1:Variable}\", value: ${1:Variable}, path: '$TM_FILENAME', line: '$TM_LINE_NUMBER', commit: \"${2:comment}\", isActive: false })"
+          "clg.logger({ name: \"${1:Variable}\", value: ${1:Variable}, file: '$TM_FILENAME', line: '$TM_LINE_NUMBER', comment: \"${2:comment}\", isActive: false })"
      ],
      "description": "Console Log Advanced"
 }
@@ -94,7 +99,14 @@ Sorry we are in production mode..
 ### Webstrom snippet
 
 ```javascript
-clg.message({ name: '$Variable$', value: $Variable$, path: '$FileName$', line: '$LineNumber$',commit: '$Commit',isActive: $isActive})
+clg.message({
+  name: "$Variable$",
+  value: $Variable$,
+  file: "$FileName$",
+  line: "$LineNumber$",
+  comment: "$comment",
+  isActive: $isActive,
+});
 ```
 
 ### License

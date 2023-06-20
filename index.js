@@ -5,9 +5,9 @@ class ConsoleLogAdvanced {
     this[_isDevelopMode] = isDevelopMode;
     this[_count] = 0;
   }
-  logger({ name, value, path, line, commit, isActive = true }) {
+  logger({ name, value, file, line, comment, isActive = true }) {
     if (this[_isDevelopMode]) {
-      this.#_checkDeactivate(name, value, path, line, commit, isActive);
+      this.#_checkDeactivate(name, value, file, line, comment, isActive);
     } else {
       this[_count]++;
       if (this[_count] === 1) {
@@ -15,14 +15,14 @@ class ConsoleLogAdvanced {
       }
     }
   }
-  #_checkDeactivate(name, value, path, line, commit, isActive) {
+  #_checkDeactivate(name, value, file, line, comment, isActive) {
     if (isActive) {
-      this.#_runDevelop(name, value, path, line, commit, isActive);
+      this.#_runDevelop(name, value, file, line, comment, isActive);
     } else {
-      this.#_whenLogDeactivate(path, line);
+      this.#_whenLogDeactivate(file, line);
     }
   }
-  #_runDevelop(name, value, path, line, commit, isActive) {
+  #_runDevelop(name, value, file, line, comment, isActive) {
     const res = Object.prototype.toString.call(value);
     const dataType = res.split("[object")[1].split("]")[0];
 
@@ -34,8 +34,8 @@ class ConsoleLogAdvanced {
         "%c--------------------- Start log ------------------------------",
         "color: red"
       );
-      if (path) {
-        console.log(`%cFile: %c${path}`, "color: blue", "color: red");
+      if (file) {
+        console.log(`%cFile: %c${file}`, "color: blue", "color: red");
       }
       if (line) {
         console.log(`%cLine: %c${line}`, "color: blue", "color: red");
@@ -46,7 +46,7 @@ class ConsoleLogAdvanced {
       if (value && dataType) {
         console.log(`%cType is: %c${dataType}`, "color: blue", "color: red");
       }
-      if (value && value.length) {
+      if (value && dataType === 'Array') {
         console.log(
           `%cLength is: %c${value.length}`,
           "color: blue",
@@ -62,31 +62,31 @@ class ConsoleLogAdvanced {
         }
       }
 
-      if (commit) {
-        console.log(`%cCommit: %c${commit}`, "color: blue", "color: red");
+      if (comment) {
+        console.log(`%ccomment: %c${comment}`, "color: blue", "color: red");
       }
       console.log(
-        "%c---------------------- END log ------------------------------",
+        "%c---------------------- End log ------------------------------",
         "color: red"
       );
       console.log(
         "                                                               "
       );
     } else {
-      this.#_whenLogDeactivate(path, line);
+      this.#_whenLogDeactivate(file, line);
     }
   }
-  #_whenLogDeactivate(path, line) {
-    if (path && line) {
-      console.log(`Logger deactivate in File ${path} in line: ${line}`);
+  #_whenLogDeactivate(file, line) {
+    if (file && line) {
+      console.log(`Logger deactivate in File ${file} in line: ${line}`);
     }
-    if (path && !line) {
-      console.log(`Logger deactivate in File: ${path}`);
+    if (file && !line) {
+      console.log(`Logger deactivate in File: ${file}`);
     }
-    if (!path && line) {
+    if (!file && line) {
       console.log(`Logger deactivate in Line: ${line}`);
     }
-    if (!path && !line) {
+    if (!file && !line) {
       console.log(`Logger deactivate`);
     }
   }
