@@ -36,8 +36,11 @@ class ConsoleLogAdvanced {
       if (!!date) console.log(`%cDate: %c${date}`, blue(), red());
       if (!!time) console.log(`%cTime: %c${time}`, blue(), red());
       console.log(`%cType: %c${getDataType(value)}`, blue(), red());
-      if (getDataType(value) == 'Object') {
-        console.log(`%cLength: %c${value.lenght}`, blue(), red());
+      if (getDataType(value) == 'Array' || getDataType(value) == 'Object') {
+        console.dir(value);
+      }
+      else {
+        console.log(value);
       }
       console.log(`%cName: %c${name}`, blue(), red());
       console.log(value);
