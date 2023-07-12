@@ -39,7 +39,7 @@ class ConsoleLogAdvanced {
       if (getDataType(value) == 'Object') {
         console.log(`%cLength: %c${value.lenght}`, blue(), red());
       }
-      console.log(`%Name: %c${name}`, blue(), red());
+      console.log(`%cName: %c${name}`, blue(), red());
       console.log(value);
       if (!!comment) console.log(`%ccomment: %c${comment}`, blue(), red());
       writeEnd()
