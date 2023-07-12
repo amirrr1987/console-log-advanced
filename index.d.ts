@@ -6,7 +6,7 @@ declare class ConsoleLogAdvanced {
     name: string,
     value: unknown,
     path?: string,
-    line?: number,
+    line?: string,
     comment?: string,
     date?: string,
     time?: string,
