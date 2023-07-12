@@ -10,44 +10,36 @@
 ## Installation
 
 ```shell
-
-Install via **npm**
-
-```javascript
-
 npm i console-log-advanced
-
 pnpm i console-log-advanced
-
 yarn add console-log-advanced
-
 ```
 
 ## Usage
 
 ```javascript
-
-
 import ConsoleLogAdvanced from 'console-log-advanced';
 
 const clg = new ConsoleLogAdvanced({ isDevelop: true });
 
 const foo = { name: "foo", age: 32, isEdit: true };
- clg.logger({
-    name: "foo",
-    value: foo,
-    path: 'src/index.js',
-    line: '56',
-    comment: `comment`,
-    date: '2023-July-12',
-    time: '21:17:38',
-    isActive: true
-})
+clg.logger({
+  name: "foo",
+  value: foo,
+  path: 'src/index.js',
+  line: '56',
+  comment: `comment`,
+  date: '2023-July-12',
+  time: '21:17:38',
+  isActive: true
+});
 ```
+
+## Example Output
 
 ### isDevelopMode = true & isActive = true
 
-```plaintext
+```javascript
 --------------------- Start log ------------------------------
 Path: logger.js
 Line: '56'
@@ -59,45 +51,49 @@ Name: foo
 comment: This is developer comment
 ---------------------- End log ------------------------------
 ```
+
 ### isDevelopMode = false
-```plaintext
+
+```
 Sorry we are in production mode..
 ```
 
-### VSCode snippet
+## VSCode Snippet
+
 ```json
 "logger": {
-        "prefix": "-logger",
-        "body": [
-            " logger({",
-            "    name: \"${1:Variable}\",",
-            "    value: ${1:Variable},",
-            "    path: '$RELATIVE_FILEPATH',",
-            "    line: '$TM_LINE_NUMBER',",
-            "    date: '${CURRENT_YEAR}-${CURRENT_MONTH_NAME}-${CURRENT_DATE}',",
-            "    time: '${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}',",
-            "    comment: `${2:comment}`",
-            "})"
-        ],
-        "description": "Logger full"
+  "prefix": "-logger",
+  "body": [
+    "logger({",
+    "  name: \"$1\",",
+    "  value: $1,",
+    "  path: '$RELATIVE_FILEPATH',",
+    "  line: '$TM_LINE_NUMBER',",
+    "  date: '${CURRENT_YEAR}-${CURRENT_MONTH_NAME}-${CURRENT_DATE}',",
+    "  time: '${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}',",
+    "  comment: `$2`",
+    "})"
+  ],
+  "description": "Logger full"
 }
 ```
 
-### Webstrom snippet
+## WebStorm Snippet
 
 ```javascript
 clg.logger({
-    name: "$1",
-    value: $1,
-    path: '$RELATIVE_FILEPATH',
-    line: '$TM_LINE_NUMBER',
-    date: '${CURRENT_YEAR}-${CURRENT_MONTH_NAME}-${CURRENT_DATE}',
-    time: '${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}',
-    comment: `$2`,
-    isActive: $isActive,
-})
+  name: "$1",
+  value: $1,
+  path: '$RELATIVE_FILEPATH',
+  line: '$TM_LINE_NUMBER',
+  date: '${CURRENT_YEAR}-${CURRENT_MONTH_NAME}-${CURRENT_DATE}',
+  time: '${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}',
+  comment: `$2`,
+  isActive: $isActive,
+});
 ```
 
-### License
+## License
 
 MIT
+
