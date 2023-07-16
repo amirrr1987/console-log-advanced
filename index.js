@@ -43,14 +43,14 @@ class ConsoleLogAdvanced {
       else {
         console.log(value);
       }
-      if (!!comment) console.log(`%ccomment: %c${comment}`, blue(), red());
+      if (!!comment) console.log(`%cComment: %c${comment}`, blue(), red());
       writeEnd()
     }
   }
   #production() {
     this[_count]++
     if (this[_count] === 1) {
-      console.log(`%cSorry logs is deactive, We are in production mode..`, red());
+      console.log(`%cSorry logs is deactivate, We are in production mode..`, red());
     }
   }
 }
