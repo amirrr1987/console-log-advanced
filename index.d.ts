@@ -1,6 +1,6 @@
 declare class ConsoleLogAdvanced {
-  private readonly #isDevelopMode: boolean;
-  private readonly #count: number;
+  private readonly #_isDevelopMode: boolean;
+  private readonly #_count: number;
   constructor({ isDevelopMode }: { isDevelopMode: boolean });
   logger(data: {
     name: string,
