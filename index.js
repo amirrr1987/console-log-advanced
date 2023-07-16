@@ -1,57 +1,73 @@
-
 const _isDevelop = Symbol("isDevelop");
 const _count = Symbol("count");
+
+const colors = {
+  title: "color: red",
+  info: "color: blue",
+};
+
 const getDataType = (value) => {
-  return Object.
-    prototype
-    .toString
-    .call(value)
-    .split("[object")[1]
-    .split("]")[0]
-    .split(' ')[1]
-}
-const red = () => "color: red"
-const blue = () => "color: blue"
-const writeStart = () => console.log("%c---------- Start log -----------", red())
-const writeEnd = () => console.log("%c----------- End log ------------", red())
+  return Object.prototype.toString.call(value).split("[object ")[1].split("]")[0];
+};
+
+const writeLogHeader = () => {
+  console.groupCollapsed("%c---------- Start log -----------", colors.title);
+};
+
+const writeLogFooter = () => {
+  console.groupEnd("%c----------- End log ------------", colors.title);
+};
+
+const writeLogDetails = (label, content) => {
+  if (!content) return;
+  console.info(`%c${label}: %c${content}`, colors.info, colors.title);
+};
+
+const writeProductionMessage = () => {
+  console.error("%cSorry, logs are deactivated. We are in production mode.", colors.title);
+};
 
 class ConsoleLogAdvanced {
   constructor({ isDevelopMode }) {
     this[_isDevelop] = isDevelopMode;
     this[_count] = 0;
   }
+
   logger({ name, value, path, line, comment, date, time, isActive = true }) {
-    if (this[_isDevelop]) {
-      this.#develop({ name, value, path, line, comment, date, time, isActive })
-    }
-    else {
-      this.#production()
+    if (this.#isDevelop) {
+      this.#develop({ name, value, path, line, comment, date, time, isActive });
+    } else {
+      this.#production();
     }
   }
+
   #develop({ name, value, path, line, comment, date, time, isActive }) {
-    if (isActive) {
-      writeStart()
-      if (!!path) console.log(`%cPath: %c${path}`, blue(), red());
-      if (!!line) console.log(`%cLine: %c${line}`, blue(), red());
-      if (!!date) console.log(`%cDate: %c${date}`, blue(), red());
-      if (!!time) console.log(`%cTime: %c${time}`, blue(), red());
-      console.log(`%cType: %c${getDataType(value)}`, blue(), red());
-      console.log(`%cName: %c${name}`, blue(), red());
-      if (getDataType(value) == 'Array' || getDataType(value) == 'Object') {
-        console.dir(value);
-      }
-      else {
-        console.log(value);
-      }
-      if (!!comment) console.log(`%cComment: %c${comment}`, blue(), red());
-      writeEnd()
+    if (!isActive) return;
+
+    writeLogHeader();
+    writeLogDetails("Path", path);
+    writeLogDetails("Line", line);
+    writeLogDetails("Date", date);
+    writeLogDetails("Time", time);
+    writeLogDetails("Type", getDataType(value));
+    writeLogDetails("Name", name);
+
+    if (getDataType(value) === "Array" || getDataType(value) === "Object") {
+      console.table(value);
+    } else {
+      console.info(value);
     }
+
+    writeLogDetails("Comment", comment);
+    writeLogFooter();
   }
+
   #production() {
-    this[_count]++
-    if (this[_count] === 1) {
-      console.log(`%cSorry logs is deactivate, We are in production mode..`, red());
+    this.#count++;
+    if (this.#count === 1) {
+      writeProductionMessage();
     }
   }
 }
-export default ConsoleLogAdvanced
+
+export default ConsoleLogAdvanced;
