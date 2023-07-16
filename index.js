@@ -45,9 +45,12 @@ class ConsoleLogAdvanced {
 
   #_develop({ name, value, path, line, comment, date, time, collapsed, isActive }) {
     if (!isActive) return
+    const filePath = 'src\\views\\pages\\topics\\Index.vue';
+    const relativeFilePath = filePath.replace(/\\/g, '/');
+
 
     logHeader(name, collapsed)
-    logDetails('Path', path)
+    logDetails('Path', relativeFilePath)
     logDetails('Line', line)
     logDetails('Date', date)
     logDetails('Time', time)
