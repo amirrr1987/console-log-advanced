@@ -1,6 +1,6 @@
 {
   "name": "console-log-advanced",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "An advanced logging library for JavaScript, ideal for front-end frameworks like Vue, React, and Angular. Simplify debugging, error checking, and development with console log features.",
   "main": "index.js",
   "repository": {

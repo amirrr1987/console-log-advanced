@@ -1,4 +1,4 @@
-const _isDevelop = Symbol('isDevelop')
+const isDevelopMode = Symbol('isDevelopMode')
 const _count = Symbol('count')
 
 const colors = {
@@ -11,9 +11,9 @@ const getDataType = (value) => {
 }
 
 const logHeader = (title, collapsed) => {
-
-  collapsed ? console.groupCollapsed(`%c---------- Start ${title} -----------`, colors.title) : console.group(`%c---------- Start ${title} -----------`, colors.title)
-
+  collapsed
+    ? console.groupCollapsed(`%c---------- Start ${title} -----------`, colors.title)
+    : console.group(`%c---------- Start ${title} -----------`, colors.title)
 }
 
 const logFooter = () => {
@@ -26,17 +26,21 @@ const logDetails = (label, content) => {
 }
 
 const writeProductionMessage = () => {
-  console.error('%cSorry, logs are deactivated. We are in production mode.', colors.title)
+  console.log(
+    '%cWE ARE IN PRODUCTION MODE.',
+    'background-color: #F44336; color: #FFFFFF; font-size: 16px; padding: 10px; border: 2px solid #E53935;',
+  )
+  console.log('%cSorry, logs are deactivated.', 'color: #F44336; font-size: 16px; padding: 10px; ')
 }
 
 class ConsoleLogAdvanced {
   constructor({ isDevelopMode }) {
-    this[_isDevelop] = isDevelopMode
+    this[isDevelopMode] = isDevelopMode
     this[_count] = 0
   }
 
   logger({ name, value, path, line, comment, date, time, collapsed = true, isActive = true }) {
-    if (this[_isDevelop]) {
+    if (this[isDevelopMode]) {
       this.#_develop({ name, value, path, line, comment, date, time, collapsed, isActive })
     } else {
       this.#_production()
@@ -45,9 +49,8 @@ class ConsoleLogAdvanced {
 
   #_develop({ name, value, path, line, comment, date, time, collapsed, isActive }) {
     if (!isActive) return
-    const filePath = 'src\\views\\pages\\topics\\Index.vue';
-    const relativeFilePath = filePath.replace(/\\/g, '/');
-
+    const filePath = 'src\\views\\pages\\topics\\Index.vue'
+    const relativeFilePath = filePath.replace(/\\/g, '/')
 
     logHeader(name, collapsed)
     logDetails('Path', relativeFilePath)
@@ -68,11 +71,10 @@ class ConsoleLogAdvanced {
   }
 
   #_production() {
-    this._count++
-    if (this._count === 1) {
+    this[_count]++
+    if (this[_count] === 1) {
+      console.log(2)
       writeProductionMessage()
     }
   }
 }
-
-export default ConsoleLogAdvanced;
