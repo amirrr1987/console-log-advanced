@@ -11,6 +11,7 @@ declare class ConsoleLogAdvanced {
     date?: string,
     time?: string,
     isActive?: boolean
+    collapsed?: boolean
   }): void;
 }
 export default ConsoleLogAdvanced;
