@@ -10,15 +10,15 @@ const getDataType = (value) => {
   return Object.prototype.toString.call(value).split("[object ")[1].split("]")[0];
 };
 
-const writeLogHeader = () => {
+const logHeader = () => {
   console.groupCollapsed("%c---------- Start log -----------", colors.title);
 };
 
-const writeLogFooter = () => {
+const logFooter = () => {
   console.groupEnd("%c----------- End log ------------", colors.title);
 };
 
-const writeLogDetails = (label, content) => {
+const logDetails = (label, content) => {
   if (!content) return;
   console.info(`%c${label}: %c${content}`, colors.info, colors.title);
 };
@@ -34,23 +34,23 @@ class ConsoleLogAdvanced {
   }
 
   logger({ name, value, path, line, comment, date, time, isActive = true }) {
-    if (this.#isDevelop) {
-      this.#develop({ name, value, path, line, comment, date, time, isActive });
+    if (this._isDevelop) {
+      this.#_develop({ name, value, path, line, comment, date, time, isActive });
     } else {
-      this.#production();
+      this.#_production();
     }
   }
 
-  #develop({ name, value, path, line, comment, date, time, isActive }) {
+  #_develop({ name, value, path, line, comment, date, time, isActive }) {
     if (!isActive) return;
 
-    writeLogHeader();
-    writeLogDetails("Path", path);
-    writeLogDetails("Line", line);
-    writeLogDetails("Date", date);
-    writeLogDetails("Time", time);
-    writeLogDetails("Type", getDataType(value));
-    writeLogDetails("Name", name);
+    logHeader();
+    logDetails("Path", path);
+    logDetails("Line", line);
+    logDetails("Date", date);
+    logDetails("Time", time);
+    logDetails("Type", getDataType(value));
+    logDetails("Name", name);
 
     if (getDataType(value) === "Array" || getDataType(value) === "Object") {
       console.table(value);
@@ -58,13 +58,13 @@ class ConsoleLogAdvanced {
       console.info(value);
     }
 
-    writeLogDetails("Comment", comment);
-    writeLogFooter();
+    logDetails("Comment", comment);
+    logFooter();
   }
 
-  #production() {
-    this.#count++;
-    if (this.#count === 1) {
+  #_production() {
+    this._count++;
+    if (this._count === 1) {
       writeProductionMessage();
     }
   }
