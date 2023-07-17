@@ -1,4 +1,4 @@
-const isDevelopMode = Symbol('isDevelopMode')
+const _isDevelopMode = Symbol('isDevelopMode')
 const _count = Symbol('count')
 
 const colors = {
@@ -34,12 +34,12 @@ const writeProductionMessage = () => {
 
 class ConsoleLogAdvanced {
   constructor({ isDevelopMode }) {
-    this[isDevelopMode] = isDevelopMode
+    this[_isDevelopMode] = isDevelopMode
     this[_count] = 0
   }
 
   logger({ name, value, path, line, comment, date, time, collapsed = true, isActive = true }) {
-    if (this[isDevelopMode]) {
+    if (this[_isDevelopMode]) {
       this.#_develop({ name, value, path, line, comment, date, time, collapsed, isActive })
     } else {
       this.#_production()
