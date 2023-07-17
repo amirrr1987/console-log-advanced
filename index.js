@@ -27,10 +27,9 @@ const logDetails = (label, content) => {
 
 const writeProductionMessage = () => {
   console.log(
-    '%cWE ARE IN PRODUCTION MODE.',
-    'background-color: #F44336; color: #FFFFFF; font-size: 16px; padding: 10px; border: 2px solid #E53935;',
+    '%cSorry, We are in production mode. Logs are deactivated',
+    'background-color: #F44336; color: #FFFFFF; font-size: 16px; padding: 8px; border-radius: 8px',
   )
-  console.log('%cSorry, logs are deactivated.', 'color: #F44336; font-size: 16px; padding: 10px; ')
 }
 
 class ConsoleLogAdvanced {
@@ -49,7 +48,7 @@ class ConsoleLogAdvanced {
 
   #_develop({ name, value, path, line, comment, date, time, collapsed, isActive }) {
     if (!isActive) return
-    const filePath = 'src\\views\\pages\\topics\\Index.vue'
+    const filePath = path
     const relativeFilePath = filePath.replace(/\\/g, '/')
 
     logHeader(name, collapsed)
