@@ -78,3 +78,4 @@ class ConsoleLogAdvanced {
     }
   }
 }
+export default ConsoleLogAdvanced
