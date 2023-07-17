@@ -12,8 +12,8 @@ const getDataType = (value) => {
 
 const logHeader = (title, collapsed) => {
   collapsed
-    ? console.groupCollapsed(`%c---------- Start ${title} -----------`, colors.title)
-    : console.group(`%c---------- Start ${title} -----------`, colors.title)
+    ? console.groupCollapsed(`%c---------- ${title} -----------`, colors.title)
+    : console.group(`%c---------- ${title} -----------`, colors.title)
 }
 
 const logFooter = () => {
@@ -48,11 +48,8 @@ class ConsoleLogAdvanced {
 
   #_develop({ name, value, path, line, comment, date, time, collapsed, isActive }) {
     if (!isActive) return
-    const filePath = path
-    const relativeFilePath = filePath.replace(/\\/g, '/')
-
     logHeader(name, collapsed)
-    logDetails('Path', relativeFilePath)
+    logDetails('Path', path)
     logDetails('Line', line)
     logDetails('Date', date)
     logDetails('Time', time)
