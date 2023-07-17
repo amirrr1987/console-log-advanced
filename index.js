@@ -12,12 +12,18 @@ const getDataType = (value) => {
 
 const logHeader = (title, collapsed) => {
   collapsed
-    ? console.groupCollapsed(`%c---------- ${title} -----------`, colors.title)
-    : console.group(`%c---------- ${title} -----------`, colors.title)
+    ? console.groupCollapsed(
+      `%c       ${title}       `,
+      'padding-block: 4px ;border: 1px solid red; color: blue; text-transform: capitalize;',
+    )
+    : console.group(
+      `%c       ${title}       `,
+      'padding-block: 4px ;border: 1px solid red; color: blue; text-transform: capitalize;',
+    )
 }
 
 const logFooter = () => {
-  console.groupEnd('%c----------- End log ------------', colors.title)
+  console.groupEnd()
 }
 
 const logDetails = (label, content) => {
