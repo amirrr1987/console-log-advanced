@@ -22,12 +22,10 @@
 
 You can install **Console Log Advanced** using:
 
-  
-
 ```shell
-npm  i -S  console-log-advanced
-pnpm  i -S  console-log-advanced
-yarn  add  console-log-advanced
+npm i -S console-log-advanced
+pnpm i -S console-log-advanced
+yarn add console-log-advanced
 ```
 
 ## Config
@@ -44,13 +42,7 @@ export default clg
 The `isDevelopMode` option determines the activation of the logger in different modes. Set it to `true` to enable logging during development and `false` to disable logging in production. This feature ensures that logs are only active during the development phase for better performance in production environments.
   
 
-
-
-  
-
 ## Usage
-
-  
 
 ```javascript
 import clg from  '../utils/logger.ts';
@@ -98,19 +90,15 @@ Name: foo
 comment: This is developer comment
 ```
 
-  
-
 ### isDevelopMode = false
 ```
 
 Sorry we are in production mode..
 
 ```
-
   
 ## VSCode Snippet
 
-  
 
 ```json
 "logger": {
@@ -130,11 +118,8 @@ Sorry we are in production mode..
 }
 ```
 
-  
-
 ## WebStorm Snippet
 
-  
 
 ```javascript
 clg.logger({
@@ -149,24 +134,14 @@ clg.logger({
 })
 ```
 
-
-
-  
-
 ## License
-
-  
 
 MIT
 
-  
-  
-  
-  
+
 ## License
 
 Console Log Advanced is MIT licensed.
-
   
 
 ## Contribution
@@ -174,12 +149,10 @@ Console Log Advanced is MIT licensed.
 Contributions are welcome! If you find any issues or want to contribute to the project, please create a pull request or submit an issue on the GitHub repository.
 
   
-
 ## Credits
 
 Console Log Advanced is developed and maintained by Amir Maghami.
 
-  
 
 ## Support
 
