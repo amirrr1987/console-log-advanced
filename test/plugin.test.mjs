@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { build } from 'vite'
+import { build, createServer } from 'vite'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = resolve(__dirname, '..')
@@ -23,6 +23,7 @@ assert.equal(typeof logger.attachToConsole, 'function', 'attachToConsole export'
 const instance = plugin.default({ inject: false })
 assert.equal(instance.name, 'vite-plugin-console-log-advanced', 'plugin name')
 assert.equal(typeof instance.config, 'function', 'config hook')
+assert.equal(typeof instance.configResolved, 'function', 'configResolved hook')
 assert.equal(typeof instance.resolveId, 'function', 'resolveId hook')
 assert.equal(typeof instance.load, 'function', 'load hook')
 assert.equal(typeof instance.transform, 'function', 'transform hook')
@@ -44,21 +45,26 @@ assert.deepEqual(configResult.optimizeDeps.include, ['vite-plugin-console-log-ad
 const prodConfig = instance.config({}, { mode: 'production' })
 assert.equal(prodConfig.define.__CONSOLE_LOG_ADVANCED_DEV__, 'false', 'prod mode define')
 
-// --- unit: transform injection ---
+// --- unit: transform injection via configResolved entries ---
 
+const fixtureRoot = resolve(__dirname, 'fixture')
 const transformPlugin = plugin.default()
-const entryId = '/project/src/main.js'
-const ctx = {
-  getModuleInfo(id) {
-    return id === entryId ? { isEntry: true } : null
-  },
+const resolvedConfig = {
+  root: fixtureRoot,
+  build: { rollupOptions: {} },
 }
-const transformed = transformPlugin.transform.call(ctx, 'console.log("hi")', entryId)
-assert.match(transformed.code, /virtual:vite-plugin-console-log-advanced/, 'injects virtual import into entry')
+
+await transformPlugin.configResolved(resolvedConfig)
+
+const entryId = resolve(fixtureRoot, 'main.js')
+const transformed = transformPlugin.transform('console.log("hi")', entryId)
+assert.match(transformed.code, /virtual:vite-plugin-console-log-advanced/, 'injects virtual import into html entry')
+
+const skippedVirtual = transformPlugin.transform('export default {}', 'virtual:vue-inspector-options')
+assert.equal(skippedVirtual, undefined, 'skips other virtual modules without touching ModuleInfo')
 
 // --- integration: vite build with plugin ---
 
-const fixtureRoot = resolve(__dirname, 'fixture')
 const fixtureOut = resolve(fixtureRoot, 'dist')
 
 await build({
@@ -76,5 +82,21 @@ await build({
 const bundle = readFileSync(resolve(fixtureOut, 'assets/index.js'), 'utf8')
 assert.ok(bundle.length > 0, 'fixture build produced output')
 assert.doesNotMatch(bundle, /console\.logger\.debug/, 'prod build strips dev logger calls when tree-shaken')
+
+// --- integration: vite dev server transform (Vite 6+ ModuleInfo guard) ---
+
+const server = await createServer({
+  root: fixtureRoot,
+  logLevel: 'silent',
+  plugins: [plugin.default()],
+})
+
+try {
+  const result = await server.transformRequest('/main.js')
+  assert.ok(result, 'dev transform succeeds')
+  assert.match(result.code, /virtual:vite-plugin-console-log-advanced/, 'dev injects virtual import into entry')
+} finally {
+  await server.close()
+}
 
 console.log('All tests passed.')

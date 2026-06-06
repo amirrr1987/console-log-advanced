@@ -1,8 +1,77 @@
+import { existsSync, readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+
 const PACKAGE_NAME = 'vite-plugin-console-log-advanced'
 const VIRTUAL_MODULE_ID = 'virtual:vite-plugin-console-log-advanced'
 const RESOLVED_VIRTUAL_MODULE_ID = '\0' + VIRTUAL_MODULE_ID
 
 const DEFAULT_ENTRY_EXTENSIONS = ['.js', '.ts', '.jsx', '.tsx', '.vue', '.svelte']
+
+/**
+ * @param {string} id
+ */
+function normalizePath(id) {
+  return id.replace(/\\/g, '/')
+}
+
+/**
+ * @param {string} root
+ * @param {string} entry
+ */
+function resolveEntryPath(root, entry) {
+  const cleaned = entry.startsWith('/') ? entry.slice(1) : entry
+  return normalizePath(resolve(root, cleaned))
+}
+
+/**
+ * @param {string} html
+ * @param {string} root
+ */
+function collectHtmlModuleEntries(html, root) {
+  /** @type {Set<string>} */
+  const entries = new Set()
+  const scriptTagRegex = /<script([^>]*)>/gi
+  let match
+
+  while ((match = scriptTagRegex.exec(html)) !== null) {
+    const attrs = match[1]
+    if (!/type\s*=\s*["']module["']/i.test(attrs)) continue
+
+    const src = attrs.match(/\bsrc\s*=\s*["']([^"']+)["']/i)?.[1]
+    if (!src || /^https?:\/\//i.test(src) || src.startsWith('//')) continue
+
+    entries.add(resolveEntryPath(root, src))
+  }
+
+  return entries
+}
+
+/**
+ * @param {import('vite').ResolvedConfig} config
+ */
+function collectEntryPaths(config) {
+  /** @type {Set<string>} */
+  const entries = new Set()
+  const root = config.root
+
+  const input = config.build.rollupOptions?.input
+  if (typeof input === 'string') {
+    entries.add(resolveEntryPath(root, input))
+  } else if (Array.isArray(input)) {
+    for (const item of input) entries.add(resolveEntryPath(root, item))
+  } else if (input && typeof input === 'object') {
+    for (const item of Object.values(input)) entries.add(resolveEntryPath(root, item))
+  }
+
+  const htmlPath = resolve(root, 'index.html')
+  if (existsSync(htmlPath)) {
+    for (const entry of collectHtmlModuleEntries(readFileSync(htmlPath, 'utf-8'), root)) {
+      entries.add(entry)
+    }
+  }
+
+  return entries
+}
 
 /**
  * @param {string | RegExp} pattern
@@ -12,7 +81,7 @@ function matchPattern(pattern, id) {
   if (!pattern) return false
   if (pattern instanceof RegExp) return pattern.test(id)
 
-  const normalized = id.replace(/\\/g, '/')
+  const normalized = normalizePath(id)
   const glob = String(pattern).replace(/\\/g, '/')
   const regex = new RegExp(
     `^${glob.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*\*/g, '.*').replace(/\*/g, '[^/]*')}$`,
@@ -53,13 +122,15 @@ export function consoleLogAdvanced(options = {}) {
 
   const injected = new Set()
   const serializedOptions = serializeLoggerOptions(options)
+  /** @type {Set<string>} */
+  let entryPaths = new Set()
 
-  const shouldInject = function shouldInject(id, ctx) {
+  const shouldInject = function shouldInject(id) {
     if (!inject || injected.has(id)) return false
     if (id.includes('node_modules') || id.startsWith('\0')) return false
-    if (id.includes(VIRTUAL_MODULE_ID)) return false
+    if (id.startsWith('virtual:') || id.includes(VIRTUAL_MODULE_ID)) return false
 
-    const normalized = id.replace(/\\/g, '/')
+    const normalized = normalizePath(id)
 
     if (injectEntries.some((entry) => matchPattern(entry, normalized))) {
       return true
@@ -69,8 +140,7 @@ export function consoleLogAdvanced(options = {}) {
       return true
     }
 
-    const info = ctx.getModuleInfo(id)
-    if (info?.isEntry) {
+    if (entryPaths.has(normalized)) {
       return DEFAULT_ENTRY_EXTENSIONS.some((ext) => normalized.endsWith(ext))
     }
 
@@ -96,6 +166,10 @@ export function consoleLogAdvanced(options = {}) {
       }
     },
 
+    configResolved(config) {
+      entryPaths = collectEntryPaths(config)
+    },
+
     resolveId(id) {
       if (id === VIRTUAL_MODULE_ID) return RESOLVED_VIRTUAL_MODULE_ID
     },
@@ -107,7 +181,7 @@ export function consoleLogAdvanced(options = {}) {
     },
 
     transform(code, id) {
-      if (!shouldInject(id, this)) return
+      if (!shouldInject(id)) return
 
       injected.add(id)
 
