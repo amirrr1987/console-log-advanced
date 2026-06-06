@@ -3,9 +3,9 @@
 All notable changes to this project are documented here.
 
 The repository history begins with a single commit (`Initial commit`, 2022-05-14).  
-**v1.0.0** is the first published release of the current codebase.
+**v2.0.0** is the first published release of the current codebase.
 
-## [1.0.0] — 2026-06-06
+## [2.0.0] — 2026-06-06
 
 First release — Vite plugin + advanced dev logger.
 
@@ -34,4 +34,4 @@ First release — Vite plugin + advanced dev logger.
 - Peer dependency: `vite >= 5` (optional, for plugin subpath)
 - Build via Vite library mode (`npm run build`)
 
-[1.0.0]: https://github.com/amirrr1987/console-log-advanced/releases/tag/v1.0.0
+[2.0.0]: https://github.com/amirrr1987/console-log-advanced/releases/tag/v2.0.0
