@@ -1,4 +1,4 @@
-const PACKAGE_ID = 'console-log-advanced'
+const PACKAGE_ID = 'vite-plugin-console-log-advanced'
 
 const INTERNAL_SKIP = [
   PACKAGE_ID,

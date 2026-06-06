@@ -1,4 +1,5 @@
-const VIRTUAL_MODULE_ID = 'virtual:console-log-advanced'
+const PACKAGE_NAME = 'vite-plugin-console-log-advanced'
+const VIRTUAL_MODULE_ID = 'virtual:vite-plugin-console-log-advanced'
 const RESOLVED_VIRTUAL_MODULE_ID = '\0' + VIRTUAL_MODULE_ID
 
 const DEFAULT_ENTRY_EXTENSIONS = ['.js', '.ts', '.jsx', '.tsx', '.vue', '.svelte']
@@ -77,7 +78,7 @@ export function consoleLogAdvanced(options = {}) {
   }
 
   return {
-    name: 'console-log-advanced',
+    name: PACKAGE_NAME,
     enforce: 'pre',
 
     config(_config, { mode }) {
@@ -90,7 +91,7 @@ export function consoleLogAdvanced(options = {}) {
           __CONSOLE_LOG_ADVANCED_OPTIONS__: serializedOptions,
         },
         optimizeDeps: {
-          include: ['console-log-advanced'],
+          include: [`${PACKAGE_NAME}/logger`],
         },
       }
     },
@@ -101,7 +102,7 @@ export function consoleLogAdvanced(options = {}) {
 
     load(id) {
       if (id === RESOLVED_VIRTUAL_MODULE_ID) {
-        return `import 'console-log-advanced'`
+        return `import '${PACKAGE_NAME}/logger'`
       }
     },
 

@@ -3,15 +3,15 @@
 All notable changes to this project are documented here.
 
 The repository history begins with a single commit (`Initial commit`, 2022-05-14).  
-**v2.0.0** is the first published release of the current codebase.
+**v1.0.0** is the first published release of the current codebase.
 
-## [2.0.0] — 2026-06-06
+## [1.0.0] — 2026-06-06
 
 First release — Vite plugin + advanced dev logger.
 
 ### Added
 
-- **Vite plugin** (`console-log-advanced/vite`) — configure everything in `vite.config.js`
+- **Vite plugin** (`vite-plugin-console-log-advanced`) — configure everything in `vite.config.js`
 - **`console.logger`** — global logger attached automatically (no app imports)
 - **Auto-injection** — virtual module injected into app entry files
 - **Caller info** — auto file, line, and function name from stack trace
@@ -34,4 +34,4 @@ First release — Vite plugin + advanced dev logger.
 - Peer dependency: `vite >= 5` (optional, for plugin subpath)
 - Build via Vite library mode (`npm run build`)
 
-[2.0.0]: https://github.com/amirrr1987/console-log-advanced/releases/tag/v2.0.0
+[1.0.0]: https://github.com/amirrr1987/console-log-advanced/releases/tag/v1.0.0

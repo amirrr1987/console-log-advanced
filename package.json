@@ -1,30 +1,25 @@
 {
-  "name": "console-log-advanced",
-  "version": "2.0.0",
-  "description": "Tiny zero-dependency dev logger with Vite plugin. Pretty grouped console output, auto caller info, silent in production.",
+  "name": "vite-plugin-console-log-advanced",
+  "version": "1.0.0",
+  "description": "Zero-dependency Vite plugin for advanced dev logging. Pretty grouped console output, auto caller info, silent in production.",
   "type": "module",
   "sideEffects": [
     "dist/index.js"
   ],
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
-    },
-    "./vite": {
       "types": "./vite.d.ts",
       "import": "./dist/vite.js",
       "default": "./dist/vite.js"
+    },
+    "./logger": {
+      "types": "./index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     }
   },
   "peerDependencies": {
     "vite": ">=5"
-  },
-  "peerDependenciesMeta": {
-    "vite": {
-      "optional": true
-    }
   },
   "files": [
     "dist",
@@ -34,6 +29,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",
+    "test": "npm run build && node test/plugin.test.mjs",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
@@ -43,9 +39,10 @@
     "type": "git",
     "url": "git+https://github.com/amirrr1987/console-log-advanced.git"
   },
-  "types": "./index.d.ts",
+  "types": "./vite.d.ts",
   "keywords": [
-    "check error",
+    "vite-plugin",
+    "vite",
     "console log",
     "console",
     "debug",
@@ -56,12 +53,9 @@
     "log",
     "logger",
     "logging",
-    "nodejs",
-    "vite",
     "vue",
     "react",
     "angular",
-    "tools",
     "ts",
     "TypeScript",
     "console logging",

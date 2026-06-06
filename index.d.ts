@@ -1,6 +1,6 @@
-/** Injected by `console-log-advanced/vite` plugin — do not set manually. */
+/** Injected by `vite-plugin-console-log-advanced` — do not set manually. */
 declare const __CONSOLE_LOG_ADVANCED_DEV__: boolean | undefined
-/** Injected by `console-log-advanced/vite` plugin — do not set manually. */
+/** Injected by `vite-plugin-console-log-advanced` — do not set manually. */
 declare const __CONSOLE_LOG_ADVANCED_WARN__: boolean | undefined
 /** JSON logger options injected by the Vite plugin from vite.config.js */
 declare const __CONSOLE_LOG_ADVANCED_OPTIONS__: string | undefined

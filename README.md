@@ -1,9 +1,9 @@
-# console-log-advanced
+# vite-plugin-console-log-advanced
 
-[![npm version](https://badge.fury.io/js/console-log-advanced.svg)](https://badge.fury.io/js/console-log-advanced)
+[![npm version](https://badge.fury.io/js/vite-plugin-console-log-advanced.svg)](https://badge.fury.io/js/vite-plugin-console-log-advanced)
 [![License: MIT](https://img.shields.io/github/license/amirrr1987/console-log-advanced)](https://github.com/amirrr1987/console-log-advanced/blob/master/LICENSE)
 
-Zero-dependency **Vite plugin** and dev logger. Pretty grouped console output, caller info, log levels, CSS styling — silent in production. Configure once in `vite.config.js`, use `console.logger` everywhere.
+Zero-dependency **Vite plugin** for advanced dev logging. Pretty grouped console output, caller info, log levels, CSS styling — silent in production. Configure once in `vite.config.js`, use `console.logger` everywhere.
 
 ## Features
 
@@ -16,10 +16,10 @@ Zero-dependency **Vite plugin** and dev logger. Pretty grouped console output, c
 ## Install
 
 ```bash
-npm i console-log-advanced
+npm i vite-plugin-console-log-advanced
 ```
 
-Requires **Vite 5+** for the plugin subpath.
+Requires **Vite 5+**.
 
 ## Quick start
 
@@ -27,7 +27,7 @@ Requires **Vite 5+** for the plugin subpath.
 
 ```js
 import { defineConfig } from 'vite'
-import consoleLogAdvanced from 'console-log-advanced/vite'
+import consoleLogAdvanced from 'vite-plugin-console-log-advanced'
 
 export default defineConfig({
   plugins: [consoleLogAdvanced()],
@@ -131,13 +131,13 @@ console.logger.debug('cache', new Map([['user:1', user]]))
 ## Node.js (without Vite)
 
 ```js
-import log from 'console-log-advanced'
+import log from 'vite-plugin-console-log-advanced/logger'
 
 log.info('server', { port: 3000 })
 ```
 
 ```js
-import { attachToConsole, createLogger } from 'console-log-advanced'
+import { attachToConsole, createLogger } from 'vite-plugin-console-log-advanced/logger'
 
 attachToConsole(
   createLogger({
@@ -150,7 +150,7 @@ attachToConsole(
 ## How it works
 
 1. Plugin `config` sets compile-time flags from Vite `mode` and serializes logger options as JSON.
-2. Virtual module `virtual:console-log-advanced` imports the package and attaches `console.logger`.
+2. Virtual module `virtual:vite-plugin-console-log-advanced` imports the logger runtime and attaches `console.logger`.
 3. `transform` prepends the virtual import to Rollup entry files.
 4. In production builds, dead-code elimination removes logger bodies.
 
@@ -159,6 +159,7 @@ attachToConsole(
 ```bash
 npm run build
 npm run dev      # watch
+npm test
 ```
 
 ## License
