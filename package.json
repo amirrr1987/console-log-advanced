@@ -1,0 +1,80 @@
+{
+  "name": "console-log-advanced",
+  "version": "1.0.0",
+  "description": "Tiny zero-dependency dev logger with Vite plugin. Pretty grouped console output, auto caller info, silent in production.",
+  "type": "module",
+  "sideEffects": [
+    "dist/index.js"
+  ],
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./vite": {
+      "types": "./vite.d.ts",
+      "import": "./dist/vite.js",
+      "default": "./dist/vite.js"
+    }
+  },
+  "peerDependencies": {
+    "vite": ">=5"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  },
+  "files": [
+    "dist",
+    "index.d.ts",
+    "vite.d.ts"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirrr1987/console-log-advanced.git"
+  },
+  "types": "./index.d.ts",
+  "keywords": [
+    "check error",
+    "console log",
+    "console",
+    "debug",
+    "debugger",
+    "development",
+    "javaScript",
+    "js",
+    "log",
+    "logger",
+    "logging",
+    "nodejs",
+    "vite",
+    "vue",
+    "react",
+    "angular",
+    "tools",
+    "ts",
+    "TypeScript",
+    "console logging",
+    "advanced logging"
+  ],
+  "author": {
+    "email": "maghami.a1987@gmail.com",
+    "name": "Amir Maghami",
+    "url": "http://amirmaghami.ir/"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amirrr1987/console-log-advanced/issues"
+  },
+  "homepage": "https://github.com/amirrr1987/console-log-advanced#readme"
+}
